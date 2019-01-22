@@ -1,6 +1,7 @@
 package com.codeclan.UserFileFolders.UserFileFolders.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Folder {
 
     @JsonIgnoreProperties(value = "folder")
     @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<File> files;
 
     public Folder(String title, User user) {

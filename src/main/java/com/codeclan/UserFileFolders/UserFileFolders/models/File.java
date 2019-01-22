@@ -1,6 +1,7 @@
 package com.codeclan.UserFileFolders.UserFileFolders.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class File implements Serializable {
     private int size;
 
     @JsonIgnoreProperties(value = "files")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @ManyToOne
     @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
